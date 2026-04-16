@@ -25,7 +25,9 @@ CREATE TABLE IF NOT EXISTS record_companies (
     company_id SERIAL PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     contact_no VARCHAR(15),
-    address TEXT
+    address TEXT,
+    country VARCHAR(50) DEFAULT 'India',
+    description TEXT
 );
 
 -- Users
