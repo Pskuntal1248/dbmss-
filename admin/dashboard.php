@@ -26,7 +26,7 @@ $stats = $pdo->query("
 ")->fetch();
 
 // Recent purchases
-$recent = $pdo->query("SELECT * FROM v_purchase_details ORDER BY purchased_at DESC LIMIT 8")->fetchAll();
+$recent = $pdo->query("SELECT * FROM v_purchase_details ORDER BY purchase_date DESC LIMIT 8")->fetchAll();
 
 $pageTitle = 'Admin Dashboard';
 include ROOT_PATH . 'includes/header.php';
@@ -115,7 +115,7 @@ include ROOT_PATH . 'includes/header.php';
                             <td class="text-muted small"><?= h($r['movie_name']) ?></td>
                             <td><span class="badge bg-secondary"><?= h($r['format_chosen']) ?></span></td>
                             <td class="text-accent fw-semibold">₹<?= number_format($r['amount_paid'],2) ?></td>
-                            <td class="text-muted small"><?= date('d M Y', strtotime($r['purchased_at'])) ?></td>
+                            <td class="text-muted small"><?= date('d M Y', strtotime($r['purchase_date'])) ?></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

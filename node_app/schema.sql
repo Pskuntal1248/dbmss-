@@ -109,6 +109,22 @@ LEFT JOIN song_composers sc ON s.song_id = sc.song_id
 LEFT JOIN composers c ON sc.composer_id = c.composer_id
 GROUP BY s.song_id, rc.name;
 
+-- View for purchase details
+CREATE OR REPLACE VIEW v_purchase_details AS
+SELECT 
+    p.purchase_id,
+    p.customer_id,
+    c.full_name AS customer_name,
+    p.song_id,
+    s.title AS song_title,
+    s.movie_name,
+    p.amount_paid,
+    p.format_chosen,
+    p.purchase_date
+FROM purchases p
+JOIN customers c ON p.customer_id = c.customer_id
+JOIN songs s ON p.song_id = s.song_id;
+
 -- Demo Data
 INSERT INTO singers (name, contact_no, address) VALUES
 ('Arijit Singh', '9876543210', 'Mumbai'),

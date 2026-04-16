@@ -20,11 +20,11 @@ $pdo    = getPDO();
 
 $stmt = $pdo->prepare(
     "SELECT vsd.song_id, vsd.title, vsd.movie_name, vsd.singers, vsd.category,
-            p.amount_paid, p.format_chosen, p.purchased_at
+            p.amount_paid, p.format_chosen, p.purchase_date
      FROM purchases p
      JOIN v_song_details vsd ON vsd.song_id = p.song_id
      WHERE p.customer_id = ?
-     ORDER BY p.purchased_at DESC"
+     ORDER BY p.purchase_date DESC"
 );
 $stmt->execute([$custId]);
 $purchases = $stmt->fetchAll();
@@ -83,7 +83,7 @@ include ROOT_PATH . 'includes/header.php';
                         </div>
                         <div class="d-flex w-100 justify-content-between">
                             <span class="small text-muted">Date</span>
-                            <span class="small"><?= date('d M Y', strtotime($p['purchased_at'])) ?></span>
+                            <span class="small"><?= date('d M Y', strtotime($p['purchase_date'])) ?></span>
                         </div>
                         <a href="<?= ROOT_URL ?>song.php?id=<?= $p['song_id'] ?>" class="btn btn-outline-primary btn-sm w-100 mt-1">
                             <i class="bi bi-eye me-1"></i>View Details
