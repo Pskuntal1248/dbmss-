@@ -1,0 +1,66 @@
+<%- include('header') %>
+<main class="main-content">
+<section class="hero-section">
+    <div class="hero-bg-glow"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-6">
+                <p class="section-label mb-2">🎵 India's Favourite Bollywood Music Store</p>
+                <h1 class="hero-title">Your Stage.<br>Your <span class="gradient-text">Bollywood</span><br>Soundtrack.</h1>
+                <p class="hero-subtitle mt-3">Browse, discover, and buy high-quality MP3 &amp; WAV versions of your all-time favourite movie songs — instantly.</p>
+                <div class="mt-4 d-flex gap-3 flex-wrap">
+                    <a href="/shop" class="btn btn-primary btn-lg px-4"><i class="bi bi-grid me-2"></i>Browse Songs</a>
+                    <% if (!user) { %>
+                        <a href="/register" class="btn btn-outline-light btn-lg px-4"><i class="bi bi-person-plus me-2"></i>Join Free</a>
+                    <% } %>
+                </div>
+                <div class="hero-stats mt-4">
+                    <div class="hero-stat"><div class="number"><%= stats.total_songs %>+</div><div class="label">Songs</div></div>
+                    <div class="hero-stat"><div class="number"><%= stats.total_singers %>+</div><div class="label">Singers</div></div>
+                    <div class="hero-stat"><div class="number"><%= stats.total_customers %>+</div><div class="label">Customers</div></div>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
+                <div class="floating-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div style="width:50px;height:50px;background:linear-gradient(135deg,#7c3aed,#a78bfa);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+                            <i class="bi bi-music-note-list text-white fs-4"></i>
+                        </div>
+                        <div><div class="fw-bold">Now Playing</div><div class="text-muted small">Tum Hi Ho</div></div>
+                        <div class="ms-auto"><i class="bi bi-play-circle-fill fs-2 text-primary"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title mb-4">Featured Songs</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            <% songs.forEach(function(song) { %>
+            <div class="col song-card-wrapper fade-up">
+                <div class="song-card">
+                    <div class="song-card-img">
+                        <i class="bi bi-music-note-beamed music-icon"></i>
+                        <span class="category-badge"><%- catBadge(song.category) %></span>
+                        <span class="format-badge"><%= song.available_as %></span>
+                    </div>
+                    <div class="song-card-body">
+                        <div class="song-title"><%= song.title %></div>
+                        <div class="song-movie"><i class="bi bi-film"></i> <%= song.movie_name %></div>
+                        <div class="song-singer"><i class="bi bi-mic"></i> <%= song.singers || '—' %></div>
+                    </div>
+                    <div class="song-card-footer">
+                        <span class="price-tag"><%= formatPrice(song.price) %></span>
+                        <a href="/song/<%= song.song_id %>" class="btn btn-buy btn-sm">Details</a>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+</main>
+<%- include('footer') %>
