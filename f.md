@@ -1,1 +1,0 @@
-PGPASSWORD=zV8Cyea8fVruU87NUSnb15zeL8gKIN13 psql -h dpg-d7gjcsq8qa3s73eghbv0-a.singapore-postgres.render.com -U music_use music_shop_wz91
