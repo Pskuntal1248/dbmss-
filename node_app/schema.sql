@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS singers (
     singer_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     contact_no VARCHAR(15),
-    address TEXT
+    address TEXT,
+    nationality VARCHAR(50) DEFAULT 'Indian',
+    bio TEXT
 );
 
 -- Composers
@@ -13,7 +15,9 @@ CREATE TABLE IF NOT EXISTS composers (
     composer_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     contact_no VARCHAR(15),
-    address TEXT
+    address TEXT,
+    nationality VARCHAR(50) DEFAULT 'Indian',
+    bio TEXT
 );
 
 -- Record Companies
