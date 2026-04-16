@@ -54,7 +54,7 @@ include ROOT_PATH . 'includes/header.php';
                 ['icon'=>'building',        'val'=>$stats['companies'], 'lbl'=>'Labels',     'color'=>'#fcd34d'],
                 ['icon'=>'people',          'val'=>$stats['customers'], 'lbl'=>'Customers',  'color'=>'#f9a8d4'],
                 ['icon'=>'bag-check',       'val'=>$stats['purchases'], 'lbl'=>'Purchases',  'color'=>'#fdba74'],
-                ['icon'=>'currency-rupee',  'val'=>'₹'.number_format($stats['revenue'],2), 'lbl'=>'Revenue', 'color'=>'#fbbf24'],
+                ['icon'=>'currency-rupee',  'val'=>'₹'.number_format((float)($stats['revenue'] ?? 0), 2), 'lbl'=>'Revenue', 'color'=>'#fbbf24'],
             ];
             foreach ($statItems as $s): ?>
             <div class="col">
@@ -114,7 +114,7 @@ include ROOT_PATH . 'includes/header.php';
                             <td><?= h($r['song_title']) ?></td>
                             <td class="text-muted small"><?= h($r['movie_name']) ?></td>
                             <td><span class="badge bg-secondary"><?= h($r['format_chosen']) ?></span></td>
-                            <td class="text-accent fw-semibold">₹<?= number_format($r['amount_paid'],2) ?></td>
+                            <td class="text-accent fw-semibold">₹<?= number_format((float)($r['amount_paid'] ?? 0), 2) ?></td>
                             <td class="text-muted small"><?= date('d M Y', strtotime($r['purchase_date'])) ?></td>
                         </tr>
                     <?php endforeach; ?>

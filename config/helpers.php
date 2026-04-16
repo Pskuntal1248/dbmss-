@@ -74,7 +74,7 @@ function h(string $s): string {
 
 /** Format price in INR */
 function formatPrice(float $price): string {
-    return '₹' . number_format($price, 2);
+    return '₹' . number_format((float)($price ?? 0), 2);
 }
 
 /** Format duration (HH:MM:SS → MM:SS or H:MM:SS) */

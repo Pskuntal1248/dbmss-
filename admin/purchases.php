@@ -40,7 +40,7 @@ include ROOT_PATH . 'includes/header.php';
 <div class="col-md-9 col-lg-10 py-4 px-4">
 
     <h1 class="fw-bold mb-1">Purchase History</h1>
-    <p class="text-muted mb-4">Total Revenue: <strong class="text-accent">₹<?= number_format($total, 2) ?></strong>
+    <p class="text-muted mb-4">Total Revenue: <strong class="text-accent">₹<?= number_format((float)($total ?? 0), 2) ?></strong>
        &bull; <?= count($purchases) ?> transaction(s)</p>
 
     <!-- Top Songs -->
@@ -56,7 +56,7 @@ include ROOT_PATH . 'includes/header.php';
                     <td class="fw-semibold"><?= h($t['title']) ?></td>
                     <td class="text-muted small"><?= h($t['movie_name']) ?></td>
                     <td><span class="badge bg-primary"><?= $t['units_sold'] ?></span></td>
-                    <td class="text-accent fw-semibold">₹<?= number_format($t['total_revenue'],2) ?></td>
+                    <td class="text-accent fw-semibold">₹<?= number_format((float)($t['total_revenue'] ?? 0), 2) ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -87,7 +87,7 @@ include ROOT_PATH . 'includes/header.php';
                     <td class="fw-semibold"><?= h($p['song_title']) ?></td>
                     <td class="text-muted small"><?= h($p['movie_name']) ?></td>
                     <td><span class="badge bg-secondary"><?= h($p['format_chosen']) ?></span></td>
-                    <td class="text-accent fw-semibold">₹<?= number_format($p['amount_paid'],2) ?></td>
+                    <td class="text-accent fw-semibold">₹<?= number_format((float)($p['amount_paid'] ?? 0), 2) ?></td>
                     <td class="text-muted small"><?= date('d M Y, h:i A', strtotime($p['purchase_date'])) ?></td>
                 </tr>
                 <?php endforeach; ?>
