@@ -1,14 +1,13 @@
 <?php
 /**
- * Database Connection — PDO (PostgreSQL for Render deployment)
- * Online Music Shop — DBMS College Project
+ * Database Connection — PDO (PostgreSQL for Render)
  */
 
-// Parse Render's DATABASE_URL environment variable
+// Render provides DATABASE_URL automatically
 $database_url = getenv('DATABASE_URL');
 
 if ($database_url) {
-    // Production: Use Render's DATABASE_URL
+    // Parse Render's DATABASE_URL: postgres://user:pass@host:port/dbname
     $db = parse_url($database_url);
     define('DB_HOST', $db['host']);
     define('DB_NAME', ltrim($db['path'], '/'));
@@ -16,7 +15,7 @@ if ($database_url) {
     define('DB_PASS', $db['pass']);
     define('DB_PORT', $db['port'] ?? 5432);
 } else {
-    // Local development fallback
+    // Fallback for local development
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'online_music_shop');
     define('DB_USER', 'postgres');
@@ -39,7 +38,6 @@ function getPDO(): PDO {
             die('<div style="font-family:sans-serif;padding:2rem;color:#c0392b;">
                  <h2>Database Connection Failed</h2>
                  <p>' . htmlspecialchars($e->getMessage()) . '</p>
-                 <p>Make sure DATABASE_URL environment variable is set in Render.</p>
                  </div>');
         }
     }
