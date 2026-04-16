@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS record_companies (
     contact_no VARCHAR(15),
     address TEXT,
     country VARCHAR(50) DEFAULT 'India',
-    description TEXT
+    description TEXT,
+    website VARCHAR(200)
 );
 
 -- Users
