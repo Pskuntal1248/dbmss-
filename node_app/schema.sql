@@ -146,13 +146,13 @@ ON CONFLICT DO NOTHING;
 
 -- Admin user (password: password)
 INSERT INTO users (username, email, password, role) VALUES
-('admin', 'admin@music.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'admin')
+('admin', 'admin@music.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin')
 ON CONFLICT DO NOTHING;
 
 -- Customer users
 INSERT INTO users (username, email, password, role) VALUES
-('alice', 'alice@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'customer'),
-('bob', 'bob@example.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'customer')
+('alice', 'alice@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer'),
+('bob', 'bob@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer')
 ON CONFLICT DO NOTHING;
 
 INSERT INTO customers (user_id, full_name, phone, address) VALUES
