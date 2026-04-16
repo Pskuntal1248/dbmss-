@@ -1,0 +1,45 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# PHP
+vendor/
+composer.phar
+composer.lock
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Session files
+sessions/
+tmp/
+
+# Uploads (if any)
+uploads/
+files/
+
+# Database backups
+*.sql.gz
+*.dump
+
+# Node (if used)
+node_modules/
+package-lock.json
